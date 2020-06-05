@@ -1,4 +1,4 @@
-# tp5-cli
+# tp6
 
 ## Project setup
 ```

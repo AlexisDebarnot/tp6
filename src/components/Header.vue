@@ -1,10 +1,10 @@
 <template>
   <section class="src-components-header">
-    <div id="header" :style="{'background-color': colorGanador}">
+    <div id="header" :style="{'background-color': this.$store.state.colorGanador}">
       <h1>
         The Great
         <br />
-        <span id="colorDisplay">{{colorAJugar}}</span>
+        <span id="colorDisplay">{{this.$store.state.colors[this.$store.state.colorAJugar],}}</span>
         <br />Guessing Game
       </h1>
     </div>
@@ -16,8 +16,6 @@
   export default  {
     name: 'src-components-header',
     props: {
-      colorAJugar:String,
-      colorGanador:String
     },
     mounted () {
 

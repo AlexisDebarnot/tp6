@@ -11,10 +11,7 @@
     props: {      
       color:String,
       index:Number,
-      mostrar:Function,
       retornar: Function,
-      colorAJugar: String,
-      juegoEnCurso: Boolean,
     },
     mounted () {
     },
@@ -24,22 +21,24 @@
     },
     methods: {
       mostrarColor(){ 
-        if(this.juegoEnCurso){
-          if(this.colorAJugar != this.color){
-            if(this.color != "#232323"){
-              let obj = {
-              color: "#232323",
+        let obj = {
+              color: "",
               index: this.index
-            }
-            this.$emit('actualizar-color', obj)
-            this.retornar(false) 
-            }
-                     
+        }
+        if(this.$store.state.juegoEnCurso){
+          if(this.$store.state.colors[this.$store.state.colorAJugar] != this.color){
+            if(this.color != "#232323"){
+              obj.color= "#232323",
+              this.$store.dispatch('actualizarColor', obj)
+              this.retornar(false) 
+            }                   
           }else{          
             this.retornar(true)
-          } 
+            this.color = this.$store.state.colors[this.$store.state.colorAJugar]
+            obj.color = this.$store.state.colors[this.$store.state.colorAJugar],
+            this.$store.dispatch('actualizarColor', obj)
+          }
         }
-               
       },
     },
     computed: {

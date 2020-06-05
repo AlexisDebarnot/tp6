@@ -2,19 +2,19 @@
   <section class="src-components-nav-bar">
     <div id="navigator">
       <button id="reset" @click="inicializarColores">New colors!</button>
-      <span id="message">{{msg}}</span>
+      <span id="message">{{this.$store.state.msg}}</span>
 
       <button
         id="easy"
         @click="dificultadEasy"
-        :style="{'background-color': coloresBotones.colorBotonEasy, 'color': coloresBotones.colorLetraEasy}"
+        :style="{'background-color': $store.state.coloresBotones.colorBotonEasy, 'color': $store.state.coloresBotones.colorLetraEasy}"
       >easy</button>
       <button
         id="hard"
         @click="dificultadHard"
-        :style="{'background-color': coloresBotones.colorBotonHard, 'color': coloresBotones.colorLetraHard}"
+        :style="{'background-color': $store.state.coloresBotones.colorBotonHard, 'color': $store.state.coloresBotones.colorLetraHard}"
       >hard</button>
-      <span id="aciertos">Aciertos: {{aciertos}}/{{intentosTotales}}</span>
+      <span id="aciertos">Aciertos: {{$store.state.aciertos}}/{{$store.state.intentos}}</span>
     </div>
   </section>
 </template>
@@ -28,10 +28,6 @@
       dificultadHard:Function,
       dificultadEasy:Function,
       inicializarColores:Function,
-      coloresBotones:Object,
-      aciertos:Number,
-      intentosTotales:Number,
-      msg: String
     },
 
     mounted () {

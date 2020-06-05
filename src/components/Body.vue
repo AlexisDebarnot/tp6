@@ -1,15 +1,11 @@
 <template>
   <section class="src-components-body">
     <div id="container">
-      <div v-for="(color,index) in colors" :key="index">
+      <div v-for="(color,index) in this.$store.state.colors" :key="index">
         <Cuadrado
-          :colorAJugar="colorAJugar"
           :retornar="retornar"
-          :mostrar="mostrar"
           :color="color"
           :index="index"
-          :juegoEnCurso="juegoEnCurso"
-          @actualizar-color="actualizarColor($event)"
         />
       </div>
     </div>
@@ -22,12 +18,8 @@
   export default  {
     name: 'src-components-body',
     props: {
-      cuadrados:Array,
-      colors:Array,
       mostrar:Function,       
       retornar: Function,
-      juegoEnCurso: Boolean,
-      colorAJugar: String
     },
     components: {
       Cuadrado      
@@ -41,9 +33,7 @@
       }
     },
     methods: {  
-      actualizarColor(c) {
-          this.$emit('actualizar-color', c)
-      }
+
     },
     computed: {
     }
